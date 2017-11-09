@@ -17,7 +17,7 @@ public class Main {
 
         HttpLogger logger = new HttpLogger("$LOGGER_URL");
         after((request, response) -> {
-            if (response.body() != null) logger.log(request.raw(), request.body(), response.raw(), response.body());
+            if (response.body() != null) logger.log(request.raw(), response.raw(), response.body(), request.body());
         });
 
         get("/hello", (req, res) -> "Hello World");
