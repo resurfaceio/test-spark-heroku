@@ -15,7 +15,7 @@ public class Main {
         port(Integer.valueOf(System.getenv("PORT")));
         staticFileLocation("/public");
 
-        HttpLogger logger = new HttpLogger("$LOGGER_URL");
+        HttpLogger logger = new HttpLogger("$LOGGER_URL", "include debug");
         after((request, response) -> {
             if (response.body() != null) logger.log(request.raw(), response.raw(), response.body(), request.body());
         });
