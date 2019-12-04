@@ -6,7 +6,7 @@ import java.util.Map;
 
 import static spark.Spark.*;
 
-import io.resurface.HttpLogger;
+import io.resurface.*;
 
 public class Main {
 
@@ -17,7 +17,7 @@ public class Main {
 
         HttpLogger logger = new HttpLogger("$LOGGER_URL", "include debug");
         after((request, response) -> {
-            if (response.body() != null) logger.log(request.raw(), response.raw(), response.body(), request.body());
+            if (response.body() != null) HttpMessage.send(logger, request.raw(), response.raw(), response.body(), request.body());
         });
 
         get("/hello", (req, res) -> "Hello World");
