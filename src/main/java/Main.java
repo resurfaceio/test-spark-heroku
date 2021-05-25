@@ -12,10 +12,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        port(Integer.valueOf(System.getenv("PORT")));
+        port(8080);
         staticFileLocation("/public");
 
-        HttpLogger logger = new HttpLogger("$LOGGER_URL", "include debug");
+        HttpRules.setDefaultRules("include debug");
+        HttpLogger logger = new HttpLogger();
         after((request, response) -> {
             if (response.body() != null) HttpMessage.send(logger, request.raw(), response.raw(), response.body(), request.body());
         });
