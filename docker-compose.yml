@@ -11,7 +11,7 @@ services:
 
   spark:
     image: test-spark
-    container_name: test_spark_app
+    container_name: spark
     ports:
       - '80:8080'
     env_file:

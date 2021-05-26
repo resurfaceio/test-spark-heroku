@@ -14,11 +14,11 @@ bash:
 	@docker exec -it spark bash
 
 logs:
-	@docker logs -f test_spark_app
+	@docker logs -f spark
 
 ping:
 	@curl "http://localhost/hello"
 
 restart:
 	@docker-compose stop
-	@docker-compose up
+	@docker-compose up --detach
