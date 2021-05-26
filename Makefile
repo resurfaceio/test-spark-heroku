@@ -17,7 +17,7 @@ logs:
 	@docker logs -f spark
 
 ping:
-	@curl "http://localhost/hello"
+	@curl 'http://localhost/' -H 'Content-Type: application/json' --data-binary '{"message":"hi!"}'
 
 restart:
 	@docker-compose stop
