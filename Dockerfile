@@ -3,6 +3,5 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY pom.xml /app/
 COPY src /app/src
-RUN mvn package
 EXPOSE 8080
-CMD java -jar target/helloworld.jar
+CMD mvn package && java -jar target/helloworld.jar
