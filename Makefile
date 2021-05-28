@@ -22,3 +22,6 @@ ping:
 restart:
 	@docker-compose stop
 	@docker-compose up --detach
+
+test:
+	@docker exec -it spark python3 test.py
